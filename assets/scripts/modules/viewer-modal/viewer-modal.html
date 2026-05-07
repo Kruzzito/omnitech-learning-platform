@@ -1,0 +1,43 @@
+<div class="viewer-container">
+    <header class="viewer-header">
+        <div class="header-info">
+            <button id="close-viewer" class="icon-btn-alt"><i data-lucide="chevron-left"></i></button>
+            <div>
+                <span class="course-label" id="view-category"></span>
+                <h2 class="course-title" id="view-title"></h2>
+            </div>
+        </div>
+        <button id="close-viewer-x" class="icon-btn-alt mobile-hidden"><i data-lucide="x"></i></button>
+    </header>
+
+    <nav class="viewer-tabs">
+        <button class="tab-link active" data-tab="video"><i data-lucide="play"></i> <span>Lección</span></button>
+        <button class="tab-link" data-tab="notas"><i data-lucide="book-text"></i> <span>Resumen</span></button>
+        <button class="tab-link" data-tab="recursos"><i data-lucide="folder-open"></i> <span>Descargas</span></button>
+        <button class="tab-link" data-tab="quiz"><i data-lucide="clipboard-check"></i> <span>Examen</span></button>
+    </nav>
+
+    <div class="viewer-body custom-scrollbar">
+        <section id="tab-video" class="tab-content active">
+            <div class="video-wrapper">
+                <iframe id="main-video" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div id="view-desc" class="content-text"></div>
+        </section>
+
+        <section id="tab-notas" class="tab-content">
+            <div id="view-resumen" class="content-text"></div>
+        </section>
+
+        <section id="tab-recursos" class="tab-content">
+            <div id="view-res-msg" class="content-text"></div>
+            <div class="resources-grid" id="view-resources-list"></div>
+        </section>
+
+        <section id="tab-quiz" class="tab-content">
+            <div id="view-quiz-msg" class="content-text" style="margin-bottom: 2rem;"></div>
+            <div id="quiz-container" class="quiz-box">
+                </div>
+        </section>
+    </div>
+</div>

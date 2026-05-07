@@ -1,0 +1,45 @@
+.course-modal-header.study-mode-active {
+    background-color: var(--accent) !important;
+    border-bottom: none;
+    transition: all 0.4s ease;
+}
+
+
+.course-modal-header.study-mode-active .course-modal-title,
+.course-modal-header.study-mode-active .breadcrumb-module {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.course-modal-header.study-mode-active .breadcrumb-lesson {
+    color: #ffffff !important;
+    font-weight: 800;
+}
+
+
+.course-modal-header.study-mode-active .btn-back-modal {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.course-modal-header.study-mode-active .btn-back-modal:hover {
+    background: #ffffff;
+    color: var(--accent);
+}
+
+
+.animate-slide-in {
+    animation: slideInWindow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes slideInWindow {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

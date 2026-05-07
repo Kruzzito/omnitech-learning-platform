@@ -1,0 +1,37 @@
+<div class="course-card" data-id="{{id}}">
+    <div class="card-media">
+        <img src="{{image}}" alt="{{title}}" class="course-img">
+        <div class="category-badge leaf-style">{{category}}</div>
+        <div class="title-overlay">
+            <h3 class="course-title">{{title}}</h3>
+        </div>
+    </div>
+
+    <div class="card-content">
+        <p class="course-description">{{description}}</p>
+        
+        <div class="progress-area" id="progress-{{id}}">
+            <div class="progress-bar-container">
+                <div class="progress-fill" id="fill-{{id}}"></div>
+            </div>
+            <span class="progress-text" id="text-progress-{{id}}">0% completado</span>
+        </div>
+
+        <div class="card-footer">
+            <div class="footer-main-actions">
+                <button class="btn {{btnClass}}" id="btn-course-{{id}}">
+                    {{btnText}}
+                </button>
+                
+                <button class="btn-unsubscribe" id="unsub-{{id}}" title="Darme de baja">
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </div>
+            
+            <div class="course-duration">
+                <i data-lucide="clock"></i>
+                <span>{{duration}}</span>
+            </div>
+        </div>
+    </div>
+</div>

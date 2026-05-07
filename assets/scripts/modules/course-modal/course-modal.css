@@ -1,0 +1,199 @@
+/* ==========================================================================
+   1. CONTENEDOR PRINCIPAL
+   ========================================================================== */
+.course-modal-container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 95vw;
+    max-width: 1400px;
+    background: var(--bg-card); 
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    /* Identidad visual: borde basado en la paleta del curso */
+    border: 1px solid var(--accent);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* ==========================================================================
+   2. HEADER
+   ========================================================================== */
+.course-modal-header {
+    height: 75px; /* Altura fija para evitar saltos visuales */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background: var(--bg-body);
+    border-bottom: 2px solid var(--accent);
+    flex-shrink: 0;
+}
+
+.header-left-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    min-width: 0; 
+}
+
+.btn-back-modal {
+    width: 38px;
+    height: 38px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.btn-back-modal:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateX(-3px);
+}
+
+
+.course-modal-titles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.course-modal-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.course-modal-title:not(.hidden)::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 12px;
+    box-shadow: 0 0 8px var(--accent);
+}
+
+.study-breadcrumb {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.breadcrumb-module {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.breadcrumb-lesson {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.btn-close-modal {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.btn-close-modal:hover {
+    background: #ff4d4d1a; 
+    color: #ff4d4d;
+    border-color: #ff4d4d;
+}
+
+
+.hidden { display: none !important; }
+
+/* ==========================================================================
+   3. CUERPO DEL MODAL
+   ========================================================================== */
+.course-modal-body {
+    display: grid;
+    grid-template-columns: 3fr 1fr; 
+    flex-grow: 1;
+    overflow: hidden;
+    background: var(--bg-card);
+}
+
+
+.course-content-area {
+    padding: 0;
+    overflow-y: hidden;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.recom-content-area {
+    padding: 1.5rem;
+    background: color-mix(in srgb, var(--accent) 4%, transparent);
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+/* ==========================================================================
+   4. SCROLLBAR PERSONALIZADA 
+   ========================================================================== */
+.recom-content-area::-webkit-scrollbar { width: 6px; }
+.recom-content-area::-webkit-scrollbar-track { background: transparent; }
+.recom-content-area::-webkit-scrollbar-thumb {
+    background-color: var(--accent); 
+    border-radius: 10px;
+    border: 2px solid transparent; 
+    background-clip: content-box;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .course-modal-body { grid-template-columns: 1fr; }
+    .recom-content-area { display: none; }
+}
+
+@media (max-width: 768px) {
+    .course-modal-container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+    .course-modal-header { padding: 0 1rem; height: 65px; }
+    .btn-back-modal, .btn-close-modal { width: 34px; height: 34px; }
+    .course-modal-title { font-size: 1rem; }
+}

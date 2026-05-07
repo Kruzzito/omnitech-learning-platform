@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="123mm"
+   height="139mm"
+   viewBox="0 0 123 139"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="dCalc.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.551334"
+     inkscape:cx="232.38065"
+     inkscape:cy="262.67715"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="123"
+       height="139"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       transform="matrix(2.0490829,0,0,1.969518,-280.55954,-175.00339)"
+       stroke="#000000"
+       stroke-linecap="round"
+       id="g6">
+      <path
+         d="m 141.24,107.18 16.701,-17.4 h 34.756 v 68.638 h -51.458 z"
+         fill="#ffffff"
+         stroke-width="1.2"
+         style="paint-order:fill markers stroke"
+         id="path5" />
+      <path
+         d="m 157.94,89.778 -0.10751,17.348 -16.594,0.0523 z"
+         fill="#afafaf"
+         stroke-linejoin="bevel"
+         stroke-width="1.1999"
+         style="paint-order:fill markers stroke"
+         id="path6" />
+    </g>
+    <rect
+       x="0.77955729"
+       y="75.926987"
+       width="121.59053"
+       height="38.957069"
+       fill="#008080"
+       style="stroke-width:2.00891;paint-order:fill markers stroke"
+       id="rect6" />
+    <text
+       x="27.78264"
+       y="107.73647"
+       fill="#ffffff"
+       font-family="sans-serif"
+       font-size="28.6711px"
+       font-weight="bold"
+       stroke-width="0.716798"
+       word-spacing="0px"
+       style="line-height:1.25"
+       id="text6"
+       transform="scale(1.0199991,0.98039303)"><tspan
+         x="27.78264"
+         y="107.73647"
+         fill="#ffffff"
+         font-family="sans-serif"
+         font-weight="bold"
+         stroke-width="0.716798"
+         id="tspan6">Calc</tspan></text>
+  </g>
+</svg>

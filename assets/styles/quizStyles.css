@@ -1,0 +1,97 @@
+.quiz-instruction-banner {
+    background-color: var(--accent) !important;
+    color: #ffffff !important;
+    padding: 0.2rem;
+    margin: 0 0 1.5rem 0;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    display: block;
+    width: 100%;
+}
+
+/* 2. LA PREGUNTA */
+.question-item {
+    margin-bottom: 1.2rem;
+}
+
+.question-text {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.6rem;
+    display: block;
+}
+
+/* 3. LAS OPCIONES */
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.quiz-opt {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0.9rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.quiz-opt input[type="radio"] {
+    display: none;
+}
+
+.quiz-opt:hover {
+    border-color: var(--accent);
+}
+
+/* SELECCIONADO: Fondo sólido */
+.quiz-opt:has(input:checked) {
+    background-color: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+.quiz-opt span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.quiz-opt:has(input:checked) span {
+    color: #ffffff !important;
+}
+
+/* 4. BOTÓN DE CALIFICAR */
+#btn-grade-quiz {
+    background-color: var(--accent);
+    color: #ffffff;
+    border: none;
+    padding: 0.7rem 2rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: block;
+    margin: 1.5rem auto 0.5rem auto;
+    box-shadow: var(--shadow-lg);
+}
+
+/* 5. RESPONSIVO */
+@media (max-width: 768px) {
+    .quiz-instruction-banner {
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+    }
+
+    .quiz-opt {
+        padding: 0.5rem 0.8rem;
+    }
+}

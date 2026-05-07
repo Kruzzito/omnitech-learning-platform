@@ -1,0 +1,227 @@
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    /* Garantiza la proporción 16:9 */
+    aspect-ratio: 16 / 9; 
+    max-width: 850px; 
+    margin: 0 auto 2rem auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: #000;
+    /* Permite que los hijos usen unidades cqi basadas en el ancho del slider */
+    container-type: inline-size; 
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end; 
+    padding: 2.5rem;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 1.2s ease-out;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slide:hover {
+    transform: scale(1.05);
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    z-index: 1;
+}
+
+.slide-info {
+    position: relative;
+    z-index: 2;
+    width: 100%; 
+    padding-right: 45px; /* Espacio para no chocar con flecha 'next' */
+    color: white;
+    transition: transform 0.4s ease;
+}
+
+.slide-title {
+    display: flex;
+    flex-direction: column; 
+    gap: 0.2rem;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    overflow: visible;
+}
+
+.title-main {
+    font-size: clamp(1.4rem, 7cqi, 2.4rem); 
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    color: var(#fff);
+}
+
+.title-sub {
+    font-size: clamp(1.1rem, 5cqi, 1.8rem);
+    font-weight: 600;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    opacity: 0.95;
+}
+
+.slide-description {
+    width: 100%;
+    max-width: 95%; 
+    font-size: 1rem !important;
+    font-weight: 400;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white !important;
+}
+
+.slide-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    margin-top: 1rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.slide:hover .slide-hint {
+    opacity: 1;
+    transform: translateX(5px);
+    color: var(--accent);
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover { 
+    background: var(--accent); 
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn.next { right: 15px; }
+.slider-btn.prev { left: 15px; }
+
+.slider-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 8px; 
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active { 
+    background: white; 
+    width: 20px; 
+    border-radius: 4px; 
+}
+
+@media (max-width: 768px) {
+    .slider-wrapper {
+        width: 100vw; 
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        
+        max-width: none;
+        border-radius: 0;
+        aspect-ratio: 16 / 9;
+        margin-bottom: 2rem;
+    }
+
+    .slide {
+        padding: 1.2rem;
+    }
+
+    .slide-info {
+        padding-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .title-main {
+        font-size: clamp(1.1rem, 8cqi, 1.4rem);
+        letter-spacing: 0.5px;
+    }
+    
+    .title-sub {
+        font-size: clamp(0.9rem, 6cqi, 1.1rem);
+        line-height: 1.1;
+    }
+
+    .slide-description {
+        font-size: 0.8rem !important;
+        line-height: 1.3;
+        -webkit-line-clamp: 2;
+        max-height: 2.6em;
+    }
+
+    .slider-btn {
+        width: 30px;
+        height: 30px;
+        background: rgba(0,0,0,0.3);
+    }
+
+    .slider-btn.next { right: 8px; }
+    .slider-btn.prev { left: 8px; }
+
+    .slider-dots {
+        bottom: 8px;
+    }
+}

@@ -1,0 +1,91 @@
+<div class="result-modal-content {{status-class}}">
+    
+    <div id="view-exam-result" class="exam-result-wrapper {{view-exam-hidden}}">
+        
+        <div class="course-banner-portrait">
+            <div class="branding-watermark">
+                <img src="./assets/marca/logo01.png" alt="Logo" class="logo-watermark">
+                <div class="text-watermark">
+                    <span class="name-watermark">OmniTech</span>
+                    <span class="sub-watermark">Learning</span>
+                </div>
+            </div>
+
+            <img src="{{course-image}}" alt="{{course-name}}" class="banner-img">
+            
+            <div class="banner-overlay">
+                <span class="banner-course-tag">{{course-name}}</span>
+            </div>
+        </div>
+
+        <div class="result-body">
+            <div class="result-emoji">{{emoji}}</div>
+            
+            <h2 class="congrats-user-name">¡{{status-title}}, {{user-name}}!</h2>
+            
+            <p class="exam-status-text">
+                {{status-message}} este desafío técnico.
+            </p>
+
+            <div class="final-avg-container">
+                <p class="avg-text">Tu promedio:</p>
+                <div class="avg-value">{{grade}}</div>
+            </div>
+
+            <p class="correct-summary">{{correct-text}}</p>
+            
+            <p class="result-message">"{{motivator}}"</p>
+        </div>
+
+        <div class="result-footer actions-row-inline">
+            <button id="btn-result-action" class="btn-primary-compact">
+                <span>{{btn-text}}</span>
+            </button>
+            
+            <button id="btn-share-exam" class="btn-share-icon-only {{share-hidden}}">
+                <i data-lucide="share-2"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="view-course-finished" class="achievement-card {{view-finished-hidden}}">
+        
+        <div class="completion-avatar-main">
+            <img src="{{user-foto}}" alt="Estudiante" class="student-completion-img">
+        </div>
+
+        <h2 class="congrats-user-name">¡FELICIDADES, {{user-name}}!</h2>
+
+        <p class="congrats-label">Has concluido con éxito el curso:</p>
+        
+        <div class="medal-container">
+            <span class="medal-display-main {{medal-class}}">🏆</span>
+        </div>
+
+        <h3 class="finished-course-name">{{course-name}}</h3>
+
+        <div class="final-avg-container">
+            <p class="avg-text">Promedio Final:</p>
+            <div class="avg-value">{{final-avg}}</div>
+        </div>
+
+        <div class="modal-branding-footer">
+            <div class="logo-section">
+                <img src="./assets/marca/logo01.png" alt="Logo" class="nav-logo">
+                <div class="logo-text">
+                    <span class="brand-name">OmniTech</span>
+                    <span class="brand-sub">Learning</span>
+                </div>
+            </div>
+            <p class="omnitech-motto-mini">Capacítate hoy para liderar mañana</p>
+        </div>
+
+        <div class="result-footer actions-row-inline">
+            <button id="btn-finish-all" class="btn-primary-compact">ACEPTAR</button>
+            
+            <button id="btn-share-results" class="btn-share-icon-only" title="Compartir Logro">
+                <i data-lucide="share-2"></i>
+            </button>
+        </div>
+    </div>
+</div>

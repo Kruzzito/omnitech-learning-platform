@@ -1,0 +1,33 @@
+<div class="panel-edit-popover">
+    <div class="popover-header">
+        <div class="title-group">
+            <i data-lucide="palette" class="icon-mini"></i>
+            <h4 class="panel-edit-title">Personalizar</h4>
+        </div>
+        <button id="st-close-edit-panel" class="mini-close-btn"><i data-lucide="x"></i></button>
+    </div>
+    
+    <div class="popover-body">
+        <div class="edit-section">
+            <p class="edit-label">Color de fondo</p>
+            <div class="hue-slider-container">
+                <input type="range" id="hue-slider" min="0" max="360" value="220" class="hue-slider">
+                <div id="color-preview-circle" class="color-preview-circle"></div>
+            </div>
+        </div>
+
+        <div class="divider"><span>o</span></div>
+
+        <div class="edit-section">
+            <button class="btn-upload-photo-mini" id="btn-trigger-file">
+                <i data-lucide="image"></i>
+                <span>Imagen</span>
+            </button>
+            <input type="file" id="panel-file-input" accept="image/*" hidden>
+        </div>
+    </div>
+
+    <div class="panel-edit-footer-mini">
+        <button id="btn-confirm-style" class="btn-accept-edit">ACEPTAR</button>
+    </div>
+</div>

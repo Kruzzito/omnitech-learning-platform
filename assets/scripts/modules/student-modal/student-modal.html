@@ -1,0 +1,37 @@
+<div class="student-drawer" id="student-drawer-container">
+    <div class="student-header" id="student-header-bg">
+        <button class="btn-close-drawer" id="close-student-modal" title="Cerrar panel">
+            <i data-lucide="x"></i>
+        </button>
+
+        <button class="btn-edit-header" id="st-change-bg-btn" title="Personalizar fondo">
+            <i data-lucide="palette"></i>
+        </button>
+        <input type="file" id="st-bg-input" accept="image/*" style="display: none;">
+        
+        <div class="student-profile-info">
+            <div class="student-avatar">
+                <img id="st-avatar-img" src="" alt="Avatar" class="hidden">
+                <div id="st-avatar-fallback"><i data-lucide="user"></i></div>
+            </div>
+            <h3 id="st-name">Cargando...</h3>
+            <p id="st-location"><i data-lucide="map-pin"></i> Ubicación no definida</p>
+        </div>
+    </div>
+
+    <div class="student-content">
+        <div id="student-progress-list" class="progress-list-container">
+            </div>
+    </div>
+
+    <div class="student-footer">
+        <button class="st-edit-btn" id="st-edit-btn">
+            <i data-lucide="user-cog"></i> 
+            <span>Editar Perfil</span>
+        </button>
+        <button class="btn-logout-alt" id="st-logout-btn">
+            <i data-lucide="log-out"></i> 
+            <span>Cerrar Sesión</span>
+        </button>
+    </div>
+</div>

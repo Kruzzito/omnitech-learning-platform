@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniTech Learning | Capacitación Profesional</title>
+    
+    <link rel="shortcut icon" href="/assets/marca/logo01.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="./assets/styles/variables.css">
+    <link rel="stylesheet" href="./assets/styles/layout.css">
+    <link rel="stylesheet" href="./assets/styles/components.css">
+    <link rel="stylesheet" href="./assets/styles/header.css">
+    <link rel="stylesheet" href="./assets/styles/home.css">
+    <link rel="stylesheet" href="./assets/styles/responsive.css">
+    <link rel="stylesheet" href="./assets/styles/quizStyles.css">
+    <link rel="stylesheet" href="./assets/styles/tabsSecciones.css">
+    <link rel="stylesheet" href="./assets/styles/cambioVentana.css">
+
+    <link rel="stylesheet" href="./assets/scripts/modules/course-cards/course-card.css">
+    <link rel="stylesheet" href="./assets/scripts/modules/slider-courses/slider-courses.css">
+    <link rel="stylesheet" href="./assets/scripts/modules/filtro/filtro.css">
+    <link rel="stylesheet" href="./assets/scripts/modules/delete-course/delete-course.css">
+    <link rel="stylesheet" href="./assets/scripts/modules/course-modal/course-modal.css">
+    <link rel="stylesheet" href="./assets/scripts/modules/tabs-course/tabs-course.css">
+    <link rel="stylesheet" href="./assets/scripts/modules/exam-results/exam-results.css">
+    <link rel="stylesheet" href="./assets/scripts/modules/perfil-modal/perfil-modal.css">
+    <link rel="stylesheet" href="./assets/scripts/modules/student-modal/student-modal.css">
+    <link rel="stylesheet" href="./assets/scripts/modules/studentPanel-edit/studentPanel-edit.css">
+
+</head>
+<body class="light-theme">
+
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="logo-section" onclick="location.hash='home'">
+                <img src="./assets/marca/logo01.png" alt="Logo OmniTech" class="nav-logo">
+                <div class="logo-text">
+                    <span class="brand-name">OmniTech</span>
+                    <span class="brand-sub">Learning</span>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-item"><i data-lucide="home"></i> <span>Inicio</span></a></li>
+                <li><a href="#nosotros" class="nav-item"><i data-lucide="info"></i> <span>Nosotros</span></a></li>
+                <li><a href="#cursos" class="nav-item"><i data-lucide="layout-grid"></i> <span>Catálogo</span></a></li>
+                <li><a href="#mis-cursos" class="nav-item"><i data-lucide="graduation-cap"></i> <span>Mis Estudios</span></a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" title="Cambiar Tema">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon" style="display:none;"></i>
+                </button>
+                
+                <div id="auth-placeholder"></div>
+                
+                <button id="mobile-menu-btn" class="mobile-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="app-viewport"></main>
+
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div id="modal-holder"></div>
+    </div>
+    <div id="toast-container"></div>
+    <div id="drawer-overlay" class="modal-overlay hidden" style="z-index: 2050;"></div>
+
+    <aside id="mobile-drawer" class="mobile-drawer">
+        <div class="drawer-header">
+            <span class="brand-name" style="font-size: 1.2rem;">Menú</span>
+            <button id="close-drawer" class="icon-btn"><i data-lucide="x"></i></button>
+        </div>
+        <nav>
+            <ul class="drawer-links">
+                <li><a href="#home" class="drawer-item"><i data-lucide="home"></i> Inicio</a></li>
+                <li><a href="#nosotros" class="drawer-item"><i data-lucide="info"></i> Nosotros</a></li>
+                <li><a href="#cursos" class="drawer-item"><i data-lucide="layout-grid"></i> Catálogo</a></li>
+                <li><a href="#mis-cursos" class="drawer-item"><i data-lucide="graduation-cap"></i> Mis Estudios</a></li>
+            </ul>
+        </nav>
+        <div id="drawer-actions" class="drawer-footer-actions"></div>
+    </aside>
+
+    <script src="./assets/scripts/courses/CUEXESNIBA01.js"></script>
+    <script src="./assets/scripts/courses/CUWOBANIBA02.js"></script>
+    <script src="./assets/scripts/courses/CUPOCREBA03.js"></script>
+    <script src="./assets/scripts/courses/CUGOSHNIBA04.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script type="module" src="./assets/scripts/app.js"></script>
+    </body>
+</html>

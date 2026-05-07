@@ -1,0 +1,57 @@
+<div class="perfil-modal-wrapper" id="perfil-modal-container">
+    <div class="perfil-header">
+        <h2 id="perfil-title">Crear Perfil Estudiantil</h2>
+        <p>Completa tus datos para personalizar tu experiencia.</p>
+    </div>
+
+    <form id="perfil-form">
+        <div class="perfil-grid">
+            <div class="perfil-photo-section">
+                <div class="photo-container">
+                    <div class="photo-display">
+                        <img id="img-preview" class="hidden">
+                        <div id="icon-placeholder"><i data-lucide="user"></i></div>
+                    </div>
+                    <label for="input-photo" class="photo-edit-badge" title="Cambiar foto">
+                        <i data-lucide="camera"></i>
+                        <input type="file" id="input-photo" accept="image/*" hidden>
+                    </label>
+                </div>
+            </div>
+
+            <div class="perfil-fields">
+                <div class="input-group">
+                    <input type="text" name="nombres" placeholder="Nombres" required>
+                </div>
+                
+                <div class="input-row">
+                    <div class="input-group">
+                        <input type="text" name="apellidoPaterno" placeholder="Apellido Paterno" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="apellidoMaterno" placeholder="Apellido Materno" required>
+                    </div>
+                </div>
+
+                <div class="input-row triple">
+                    <div class="input-group">
+                        <input type="number" name="edad" placeholder="Edad" required min="10" max="99">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="pais" placeholder="País" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="ciudad" placeholder="Ciudad" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="perfil-footer">
+            <button type="button" class="btn-cancelar" id="btn-cancelar-perfil">CANCELAR</button>
+            <button type="submit" class="btn-save-perfil">
+                <i data-lucide="save"></i> GUARDAR PERFIL
+            </button>
+        </div>
+    </form>
+</div>

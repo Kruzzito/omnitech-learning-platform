@@ -1,0 +1,343 @@
+/* ==========================================================================
+   1. ESTRUCTURA DEL HEADER DEL MODAL (Modo Estudio)
+   ========================================================================== */
+.course-modal-header {
+    height: 85px;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.course-modal-titles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    flex: 1;
+}
+
+.course-modal-title, 
+.breadcrumb-module, 
+.breadcrumb-lesson {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+
+.course-modal-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--text-main);
+}
+
+.study-breadcrumb {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2px;
+}
+
+.breadcrumb-module {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.breadcrumb-lesson {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.btn-close-modal.study-active {
+    display: none;
+}
+
+/* ==========================================================================
+   2. NAVEGACIÓN POR PESTAÑAS (TABS)
+   ========================================================================== */
+.tabs-course-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-card);
+    overflow: hidden;
+}
+
+.tabs-navigation {
+    display: flex;
+    gap: 5px;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 1rem;
+    background: var(--bg-body);
+    flex-shrink: 0; 
+    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    overflow-x: auto;
+    scrollbar-width: none;
+    align-items: center;
+}
+
+.tabs-navigation::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    padding: 0 18px;
+    height: 100%; 
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn i, .tab-btn svg { width: 18px; height: 18px; }
+
+.tab-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.tab-btn.hidden { display: none; }
+
+/* REGLA DE SEGURIDAD: Ocultar Recomendaciones siempre en escritorio */
+.tab-btn[data-tab="recomendaciones"] {
+    display: none !important;
+}
+
+/* ==========================================================================
+    3. ACORDEÓN ACADÉMICO (Alternancia Lateral Rápida)
+   ========================================================================== */
+
+.course-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.accordion-group {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-card);
+}
+
+.accordion-header {
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.accordion-header:hover { background: rgba(255, 255, 255, 0.05); }
+
+.acc-icon { transition: transform 0.3s ease; }
+
+.lesson-row {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    height: 52px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.lesson-info-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+.lesson-icon-wrapper {
+    width: 20px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+
+.alternating-title-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.part-a, .part-b, .static-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.part-a {
+    color: var(--text-main);
+    flex-shrink: 0;
+}
+
+.part-b {
+    color: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 1024px) {
+    .alternating-title-container {
+        height: 1.2rem;
+    }
+
+    .part-a, .part-b {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        animation: alternate-slide-horizontal-fast 5s infinite ease-in-out;
+    }
+
+    .part-b {
+        opacity: 0;
+        animation-delay: 2.5s;
+        text-overflow: clip;
+    }
+
+    @keyframes alternate-slide-horizontal-fast {
+        0% { opacity: 0; transform: translateX(15px); }
+        10%, 40% { opacity: 1; transform: translateX(0); }
+        50%, 100% { opacity: 0; transform: translateX(-15px); }
+    }
+}
+
+.lesson-status-badge {
+    width: 85px; 
+    text-align: right;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.lesson-row:hover .part-a,
+.lesson-row:hover .part-b {
+    animation-play-state: paused;
+}
+
+.study-trigger:hover {
+    background: var(--accent);
+}
+
+.study-trigger:hover .part-a,
+.study-trigger:hover .part-b,
+.study-trigger:hover .static-title,
+.study-trigger:hover b,
+.study-trigger:hover i {
+    color: white !important;
+}
+
+/* ==========================================================================
+   4. ELEMENTOS DE CONTROL Y MEDIA
+   ========================================================================== */
+.btn-back-modal {
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.btn-back-modal:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.tabs-content {
+    flex-grow: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+/* ==========================================================================
+   5. RESPONSIVO Y ANIMACIONES
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .tabs-navigation { padding: 0; gap: 0; }
+    
+    .tab-btn { 
+        flex: 1; 
+        justify-content: center; 
+        padding: 0 10px; 
+    }
+    
+    .tab-btn span { display: none; }
+    
+    .tab-btn.active {
+        flex: 2.5; 
+        background: rgba(var(--accent-rgb), 0.05);
+    }
+    
+    .tab-btn.active span { 
+        display: inline; 
+        font-size: 0.8rem; 
+    }
+ 
+    .tab-btn[data-tab="recomendaciones"].mobile-only { 
+        display: flex !important; 
+    }
+}
+
+@media (max-width: 480px) {
+    .tabs-content {
+        padding: 1rem 0.8rem;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    touch-action: none;
+}
+
+/* 2. EL VIEWPORT*/
+#app-viewport {
+    margin-top: 90px;
+    min-height: calc(100vh - 90px);
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    transition: margin-top 0.3s ease;
+}
+
+/* 3. CONTENEDORES DE SECCIÓN*/
+.section-container {
+    width: 100%;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
+/* 4. UTILIDADES DE POSICIONAMIENTO*/
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* 5. CAPAS DE PROFUNDIDAD (Z-INDEX) */
+.main-header {
+    z-index: 1000;
+}
+
+.modal-overlay {
+    z-index: 2000;
+}
+
+.mobile-drawer {
+    z-index: 2100;
+}
+
+#toast-container {
+    z-index: 3000;
+}
+
+/* 6. GRID DE CURSOS (CATÁLOGO Y MIS ESTUDIOS)*/
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* 7. OVERLAY GLOBAL*/
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}

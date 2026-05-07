@@ -1,0 +1,61 @@
+.omni-note {
+    display: flex;
+    gap: 15px;
+    padding: 1.2rem;
+    border-radius: var(--radius-md);
+    margin: 1.5rem 0;
+    align-items: center;
+}
+
+.note-success { background: #dcfce7; border-left: 5px solid #22c55e; color: #166534; }
+.note-tip { background: #fef9c3; border-left: 5px solid #eab308; color: #854d0e; }
+.note-warning { background: #ffedd5; border-left: 5px solid #f97316; color: #9a3412; }
+
+.flujo-academico {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 1.5rem 0;
+}
+
+.paso {
+    background: var(--bg-card);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.paso::before {
+    content: attr(data-paso);
+    background: var(--accent);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.ficha-herramienta {
+    background: #1e293b;
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    gap: 20px;
+    margin: 2rem 0;
+}
+
+.ficha-atajo-footer kbd {
+    background: #334155;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    border-bottom: 3px solid #0f172a;
+}

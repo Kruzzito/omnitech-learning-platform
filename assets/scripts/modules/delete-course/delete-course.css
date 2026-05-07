@@ -1,0 +1,99 @@
+.modal-content-wrapper.palette-warning {
+    background: rgba(112, 0, 0, 0.8) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 0 !important;
+    overflow: hidden;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    border-radius: var(--radius-md);
+}
+
+.delete-modal-container {
+    background: transparent;
+    color: #ffffff;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.modal-description {
+    font-size: 1.1rem;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-bottom: 1.5rem;
+}
+
+.alert-warning-box {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px dashed rgba(255, 255, 255, 0.4);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 2rem 0;
+    text-align: left;
+    font-weight: 600;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+#confirm-delete.btn-danger {
+    background-color: #ffffff !important;
+    color: #700000 !important;
+    font-weight: 900 !important;
+    border: none !important;
+    padding: 0.8rem 1.5rem;
+}
+
+#cancel-delete.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+    font-weight: 700 !important;
+    padding: 0.8rem 1.5rem;
+}
+
+.delete-warning-icon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-warning-icon svg, 
+.delete-warning-icon i {
+    width: 80px !important; 
+    height: 80px !important;
+    color: #ffffff;
+    stroke-width: 2.5px;
+}
+
+.alert-warning-box i,
+.alert-warning-box svg {
+    width: 32px !important;
+    height: 32px !important;
+    color: #ffffff;
+    flex-shrink: 0;
+    stroke-width: 2px;
+}
+
+.alert-warning-box span {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+}

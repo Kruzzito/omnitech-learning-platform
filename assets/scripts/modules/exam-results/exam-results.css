@@ -1,0 +1,368 @@
+.result-modal-content {
+    text-align: center;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #f0f2f5;
+    animation: fadeInScale 0.4s ease-out;
+    width: 100%;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.exam-result-wrapper {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.course-banner-portrait {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--accent);
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.branding-watermark {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(10, 10, 15, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.logo-watermark {
+    height: 60px;
+    width: auto;
+}
+
+.text-watermark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-align: left;
+}
+
+.name-watermark {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.sub-watermark {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 15px 15px;
+    background: linear-gradient(to top,
+            rgba(10, 10, 15, 0.98) 5%,
+            rgba(10, 10, 15, 0.7) 50%,
+            transparent 100%);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.banner-course-tag {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.banner-lesson-name {
+    font-size: 1rem;
+    font-weight: 900;
+    color: white;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.result-body {
+    padding: 20px;
+}
+
+.result-emoji {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    animation: emojiBounce 1s infinite alternate ease-in-out;
+}
+
+@keyframes emojiBounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+.exam-status-text {
+    font-size: 0.95rem;
+    margin: 10px 0;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+}
+
+.result-message {
+    font-style: italic;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 15px;
+    padding: 0 10px;
+}
+
+.achievement-card {
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 28px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.completion-avatar-main {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 0.8rem;
+    border-radius: 50%;
+    border: 4px solid var(--accent);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.3);
+}
+
+.student-completion-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.congrats-user-name {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+.congrats-label {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin: 5px 0 1rem;
+    line-height: 1.4;
+}
+
+.medal-display-main {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.finished-course-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    max-width: 90%;
+    line-height: 1.2;
+}
+
+.final-avg-container {
+    margin: 10px 0;
+}
+
+.avg-text {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-bottom: 2px;
+}
+
+.avg-value {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.correct-summary {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.modal-branding-footer {
+    width: 90%;
+    margin-top: 1rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-branding-footer .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.omnitech-motto-mini {
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.actions-row-inline {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding: 0 20px 20px;
+}
+
+.btn-primary-compact {
+    flex: 1;
+    max-width: 200px;
+    height: 48px;
+    border-radius: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background-color: var(--accent);
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.btn-share-icon-only {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-compact:hover,
+.btn-share-icon-only:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+@media (max-width: 480px) {
+    .result-modal-content {
+        padding: 1rem;
+    }
+
+    .congrats-user-name {
+        font-size: 1.2rem;
+    }
+
+    .avg-value {
+        font-size: 2.2rem;
+    }
+
+    .course-banner-portrait {
+        max-height: 280px;
+    }
+
+    .branding-watermark {
+        top: 8px;
+        left: 8px;
+        padding: 4px 8px;
+    }
+}
+
+.status-pass .avg-value {
+    color: #10b981;
+}
+
+.status-fail .avg-value {
+    color: #ef4444;
+}
+
+.status-fail .btn-primary-compact {
+    background-color: #ef4444;
+}
+
+.status-fail .course-banner-portrait {
+    border-bottom-color: #ef4444;
+}
+
+.medal-gold {
+    filter: saturate(1.5) brightness(1.1) drop-shadow(0 0 10px gold);
+}
+
+.medal-silver {
+    filter: grayscale(1) brightness(1.2) drop-shadow(0 0 10px silver);
+}
+
+.medal-bronze {
+    filter: sepia(0.8) hue-rotate(-30deg) saturate(1.5);
+}
+
+.hidden {
+    display: none !important;
+}

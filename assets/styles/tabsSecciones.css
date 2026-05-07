@@ -1,0 +1,422 @@
+/* 1. CONTENEDOR PRINCIPAL (VIEWPORT)
+   ========================================================================== */
+.tabs-content {
+    background-color: var(--bg-app);
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+/* 2. LA "HOJA" DE ESTUDIO (DOCUMENTO)
+   ========================================================================== */
+.tab-text-content,
+.animate-fade-in {
+    background-color: var(--bg-card);
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 3.5rem;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+/* 3. REPRODUCTOR DE VIDEO
+   ========================================================================== */
+.video-preview-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-sm);
+}
+
+.video-preview-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 4. JERARQUÍA TIPOGRÁFICA DINÁMICA
+   ========================================================================== */
+.tab-text-content h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    border-bottom: 3px solid var(--accent-light);
+    padding-bottom: 0.8rem;
+}
+
+.tab-text-content h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 2.5rem 0 1.2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tab-text-content h2::before {
+    content: '';
+    width: 4px;
+    height: 1em;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+/* SUBTÍTULOS H3: Optimización de color para Modo Claro/Oscuro */
+.tab-text-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 1.8rem 0 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+body.dark-theme .tab-text-content h3 {
+    color: var(--accent);
+    filter: brightness(1.2);
+}
+
+.tab-text-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    text-align: justify;
+}
+
+.tab-text-content strong {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* 4.1 LISTAS ACADÉMICAS (CON SANGRÍA)
+   ========================================================================== */
+.tab-text-content ul,
+.tab-text-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    color: var(--text-main);
+}
+
+.tab-text-content li {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+.tab-text-content li::marker {
+    color: var(--accent);
+    font-weight: 800;
+}
+
+/* 5. RECURSOS Y DESCARGAS (ESTILO ACADÉMICO PRO)
+   ========================================================================== */
+.resources-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.resource-download-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem;
+    background: var(--bg-app);
+    /* Fondo sutil para destacar de la hoja */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.resource-download-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+    background: var(--bg-card);
+}
+
+.resource-icon-frame {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+}
+
+.resource-icon-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.resource-info-text {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.resource-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.resource-type-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+
+body.dark-theme .resource-download-card {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+body.dark-theme .resource-download-card:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+}
+
+/* 6. DIAGRAMA DE FLUJO, NOTAS Y KBD (RESTO DEL SISTEMA)
+   ========================================================================== */
+.flujo-academico {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 2.5rem 0;
+    position: relative;
+}
+
+.flujo-academico::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.paso {
+    position: relative;
+    background: var(--bg-card);
+    padding: 1.2rem 1.5rem 1.2rem 4.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.paso::before {
+    content: attr(data-paso);
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent);
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    z-index: 2;
+    box-shadow: 0 0 0 4px var(--bg-card);
+}
+
+.omni-note {
+    display: flex;
+    gap: 18px;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.note-success {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 6px solid #22c55e;
+    color: #166534;
+}
+
+.note-tip {
+    background-color: #fffbeb;
+    border: 1px solid #fef08a;
+    border-left: 6px solid #eab308;
+    color: #854d0e;
+}
+
+.note-danger {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 6px solid #ef4444;
+    color: #991b1b;
+}
+
+body.dark-theme .note-success {
+    background-color: #052e16;
+    border-color: #14532d;
+    color: #4ade80;
+}
+
+body.dark-theme .note-tip {
+    background-color: #451a03;
+    border-color: #78350f;
+    color: #fbbf24;
+}
+
+body.dark-theme .note-danger {
+    background-color: #450a0a;
+    border-color: #7f1d1d;
+    color: #f87171;
+}
+
+kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #ffffff, #e2e8f0);
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: #1e293b;
+    font-size: 0.85rem;
+    margin: 0 4px;
+    box-shadow: 0 4px 0 #94a3b8;
+    position: relative;
+    top: -2px;
+    transition: all 0.1s ease;
+}
+
+body.dark-theme kbd {
+    background: linear-gradient(to bottom, #475569, #1e293b);
+    border-color: #0f172a;
+    color: #f8fafc;
+    box-shadow: 0 4px 0 #020617;
+}
+
+/* 7. TABLAS PROFESIONALES
+   ========================================================================== */
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 2.5rem 0;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabla-omnitech {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tabla-omnitech th,
+.tabla-omnitech td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabla-omnitech th {
+    background-color: var(--accent);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 800;
+    text-align: left;
+}
+
+/* 8. ULTRA-OPTIMIZACIÓN RESPONSIVE (MÓVIL)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .tabs-content {
+        padding: 0;
+    }
+
+    .tab-text-content,
+    .animate-fade-in {
+        padding: 1.5rem 1rem;
+        max-width: 100%;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+    }
+
+    .tab-text-content ul,
+    .tab-text-content ol {
+        padding-left: 1.1rem;
+    }
+
+    .tab-text-content li {
+        font-size: 0.88rem;
+        line-height: 1.5;
+    }
+
+    .video-preview-container {
+        margin: -1.5rem -1rem 1.5rem -1rem;
+        width: calc(100% + 2rem);
+        border-radius: 0;
+    }
+
+    .tab-text-content h1 {
+        font-size: 1.3rem;
+    }
+
+    .tab-text-content h2 {
+        font-size: 1.15rem;
+    }
+
+    .tab-text-content h3 {
+        font-size: 0.95rem;
+    }
+
+    .tab-text-content p {
+        font-size: 0.88rem;
+        text-align: left;
+    }
+
+    .resources-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

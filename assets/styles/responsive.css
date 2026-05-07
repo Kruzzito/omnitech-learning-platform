@@ -1,0 +1,98 @@
+/* --- NIVEL 1: ACCIONES (1250px) --- */
+@media (max-width: 1250px) {
+    .desktop-only-actions {
+        display: none !important;
+    }
+
+    .mobile-toggle {
+        display: flex !important;
+        order: 2;
+    }
+
+    #theme-toggle {
+        order: 1;
+    }
+
+    #drawer-actions {
+        display: block !important;
+    }
+
+    .drawer-links li {
+        display: none !important;
+    }
+}
+
+/* --- NIVEL 2: INSTITUCIONALES (1050px) --- */
+@media (max-width: 1050px) {
+
+    .nav-links li:nth-child(1),
+    .nav-links li:nth-child(2) {
+        display: none !important;
+    }
+
+    .drawer-links li:nth-child(1),
+    .drawer-links li:nth-child(2) {
+        display: flex !important;
+    }
+}
+
+/* --- NIVEL 3: TÉCNICOS (850px) --- */
+@media (max-width: 850px) {
+    .nav-links {
+        display: none !important;
+    }
+
+    .drawer-links li {
+        display: flex !important;
+    }
+}
+
+/* --- NIVEL 4: SMARTPHONES Y TIPOGRAFÍA (600px) --- */
+@media (max-width: 600px) {
+    .section-title {
+        font-size: 1.5rem !important;
+    }
+
+    .section-text,
+    .about-main-text {
+        font-size: 0.95rem !important;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .cta-group .btn {
+        width: 100%;
+    }
+
+    .mobile-drawer-cta .btn {
+        width: 100% !important;
+        padding: 0.8rem !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* --- NIVEL 5: MÓVILES MINI (400px) --- */
+@media (max-width: 400px) {
+    .brand-sub {
+        display: none !important;
+    }
+
+    .nav-logo {
+        height: 45px !important;
+    }
+}
+
+/* --- UTILIDAD: OCULTAR EN EL DRAWER SI ESTÁ EN DESKTOP --- */
+@media (min-width: 1251px) {
+    .mobile-drawer-cta {
+        display: none !important;
+    }
+
+    .drawer-links li {
+        display: flex;
+    }
+}

@@ -1,0 +1,348 @@
+/* ==========================================================================
+   1. BOTONES (SISTEMA DE ACCIÓN)
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--radius-sm);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    gap: 10px;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-lg {
+    padding: 1.2rem 2.5rem;
+    font-size: 0.9rem;
+}
+
+.icon-btn-text {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.75rem !important;
+}
+
+.btn-youtube {
+    background-color: #FF0000 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    padding: 0.6rem 1.2rem !important;
+    transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+.btn-youtube i {
+    color: #FFFFFF !important;
+}
+
+.btn-youtube:hover {
+    background-color: #CC0000 !important;
+    transform: scale(1.05);
+    color: #FFFFFF !important;
+}
+
+@media (max-width: 480px) {
+    .btn-youtube .mobile-hidden {
+        display: none;
+    }
+
+    .btn-youtube {
+        padding: 0.6rem !important;
+    }
+}
+
+/* ==========================================================================
+   2. SECCIÓN DE BIENVENIDA (HOME EDITORIAL)
+   ========================================================================== */
+.welcome-section {
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-app);
+}
+
+.welcome-content {
+    max-width: 850px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.slogan-badge {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid var(--accent-light);
+    border-radius: 50px;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+.section-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+}
+
+.cta-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   3. SECCIÓN NOSOTROS (ABOUT)
+   ========================================================================== */
+.about-section {
+    padding: 3rem 1.5rem;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-main-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.about-main-text p {
+    margin-bottom: 1.5rem;
+}
+
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.mv-card {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--accent);
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.mv-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+}
+
+.mv-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+}
+
+.mv-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   PILARES DE LA MARCA
+   ========================================================================== */
+.pillars-section {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.pillars-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-main);
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+}
+
+.pillar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pillar-item i {
+    width: 35px;
+    height: 35px;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+.pillar-item:hover i {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.pillar-item h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.pillar-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .pillars-grid {
+        gap: 2rem;
+    }
+}
+
+/* ==========================================================================
+   4. ESTRUCTURA DE CATÁLOGO Y GRIDS
+   ========================================================================== */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+/* ==========================================================================
+   5. SISTEMA DE NOTIFICACIONES (TOASTS)
+   ========================================================================== */
+#toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 3000;
+}
+
+.toast {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    border-left: 5px solid var(--accent);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    font-weight: 700;
+    animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ==========================================================================
+   6. ANIMACIONES Y RESPONSIVE
+   ========================================================================== */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-hidden {
+        display: none;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem;
+    }
+}

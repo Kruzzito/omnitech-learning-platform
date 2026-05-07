@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniTechLearning | Plataforma de Cursos</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Fira+Code:wght@300;500&family=Inter:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script>
+        // Configuración de Tailwind para usar clases de modo oscuro
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a',
+                        darkCard: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+
+    <div id="toast">Mensaje</div>
+
+    <nav class="bg-white dark:bg-[#0F172A] shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 md:h-20 items-center relative">
+                <!-- Logo con soporte para Modo Claro y Oscuro + Spans de Identidad -->
+                <div class="flex items-center gap-3 cursor-pointer shrink-0" onclick="navigateTo('home')">
+                    <div class="flex items-center">
+                        <img src="/src/logo01.png" alt="LogoOmniTech" class="h-10 md:h-12 block dark:hidden">
+                        <img src="/src/logo02.png" alt="LogoOmniTech" class="h-10 md:h-12 hidden dark:block">
+                    </div>
+                    <div class="flex flex-col leading-none">
+                        <span
+                            class="text-base md:text-xl font-bold tracking-wider text-slate-800 dark:text-white">OmniTech</span>
+                        <span class="text-[14px] md:text-[18.1px] font-semibold text-slate-500 dark:text-slate-400">L e
+                            a r n i n g</span>
+                    </div>
+                </div>
+
+                <div class="hidden lg:flex space-x-6 items-center">
+                    <button onclick="navigateTo('home')"
+                        class="nav-btn text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 transition py-2"
+                        data-page="home">Inicio</button>
+                    <button onclick="navigateTo('nosotros')"
+                        class="nav-btn text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 transition py-2"
+                        data-page="nosotros">Nosotros</button>
+                    <button onclick="navigateTo('cursos')"
+                        class="nav-btn text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 transition py-2"
+                        data-page="cursos">Catálogo</button>
+                    <button onclick="navigateTo('mis-cursos')" id="nav-mis-cursos"
+                        class="nav-btn text-sm font-semibold text-blue-600 hover:text-blue-800 transition py-2"
+                        data-page="mis-cursos">Mis Cursos</button>
+                </div>
+
+                <div class="flex items-center space-x-2 md:space-x-4 shrink-0">
+                    <!-- Botones Navbar (Solo Desktop) -->
+                    <div class="hidden lg:flex items-center space-x-4">
+                        <button id="dark-mode-toggle-desktop"
+                            class="dark-mode-btn p-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-blue-100 dark:hover:bg-slate-600 transition">
+                            <svg class="sun-icon w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.485a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 011.414-1.414l.707.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z">
+                                </path>
+                            </svg>
+                            <svg class="moon-icon w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                            </svg>
+                        </button>
+
+                        <div id="auth-ui-desktop" class="flex items-center auth-ui-container">
+                            <button onclick="window.openAuthModal()"
+                                class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition">Entrar</button>
+                        </div>
+
+                        <a href="https://www.youtube.com/@OmniTechLearning" target="_blank"
+                            class="btn-youtube px-4 py-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505a3.017 3.017 0 0 0-2.122 2.136C0 8.055 0 12 0 12s0 3.945.501 5.814a3.017 3.017 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.945 24 12 24 12s0-3.945-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                            <span>Suscribirse</span>
+                        </a>
+                    </div>
+
+                    <!-- Contenedor Avatar Móvil (ajustado al lado del botón hamburguesa) -->
+                    <div id="nav-avatar-mobile-container" class="lg:hidden cursor-pointer hidden flex items-center"
+                        onclick="window.toggleStudentPanel()">
+                        <div
+                            class="w-10 h-10 rounded-full border-2 border-blue-600 p-0.5 bg-white shadow-md overflow-hidden">
+                            <img id="nav-student-avatar-mobile"
+                                src="https://ui-avatars.com/api/?name=U&background=2563EB&color=fff"
+                                class="w-full h-full object-cover rounded-full">
+                        </div>
+                    </div>
+
+                    <button onclick="toggleMobileMenu()"
+                        class="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition">
+                        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Movil Actualizado -->
+    <div id="mobile-menu"
+        class="fixed inset-y-0 right-0 w-64 bg-white dark:bg-slate-800 shadow-2xl z-[60] lg:hidden p-6 flex flex-col space-y-4 text-slate-900 dark:text-white">
+        <div class="flex justify-between items-center mb-6">
+            <span class="font-bold text-slate-800 dark:text-white uppercase tracking-widest text-sm">Menu</span>
+            <button onclick="toggleMobileMenu()" class="text-slate-400 hover:text-slate-600">✕</button>
+        </div>
+
+        <!-- Acciones Rapidas al Inicio del Menu -->
+        <div class="flex flex-col gap-3 pb-6 border-b dark:border-slate-700">
+            <div id="auth-ui-mobile" class="auth-ui-container">
+                <button onclick="window.openAuthModal(); toggleMobileMenu();"
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl text-sm font-bold shadow-md">Entrar</button>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button id="dark-mode-toggle-mobile"
+                    class="dark-mode-btn flex-grow flex items-center justify-center gap-3 py-3 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-200 font-bold text-xs uppercase tracking-widest">
+                    <span class="dark:hidden">Modo Oscuro</span>
+                    <span class="hidden dark:block">Modo Claro</span>
+                    <svg class="sun-icon w-4 h-4 hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.485a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 011.414-1.414l.707.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z">
+                        </path>
+                    </svg>
+                    <svg class="moon-icon w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <a href="https://www.youtube.com/@OmniTechLearning" target="_blank"
+                class="btn-youtube w-full justify-center">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505a3.017 3.017 0 0 0-2.122 2.136C0 8.055 0 12 0 12s0 3.945.501 5.814a3.017 3.017 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.945 24 12 24 12s0-3.945-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+                <span>YouTube</span>
+            </a>
+        </div>
+
+        <button onclick="navigateTo('home'); toggleMobileMenu();"
+            class="text-left py-3 font-semibold text-slate-600 dark:text-slate-300">Inicio</button>
+        <button onclick="navigateTo('nosotros'); toggleMobileMenu();"
+            class="text-left py-3 font-semibold text-slate-600 dark:text-slate-300">Nosotros</button>
+        <button onclick="navigateTo('cursos'); toggleMobileMenu();"
+            class="text-left py-3 font-semibold text-slate-600 dark:text-slate-300">Catálogo</button>
+        <button onclick="navigateTo('mis-cursos'); toggleMobileMenu();"
+            class="text-left py-3 font-semibold text-blue-600">Mis Cursos</button>
+    </div>
+
+    <div id="panel-overlay" onclick="window.toggleStudentPanel()"></div>
+
+    <div class="flex-grow flex flex-col lg:flex-row overflow-hidden relative">
+        <main id="main-content" class="flex-grow overflow-y-auto w-full">
+            <section id="page-home" class="page-view active">
+
+                <!-- Slider Dinámico de Cursos (Ahora en la cima) -->
+                <section class="py-8 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="relative group">
+                            <!-- Botones a los lados -->
+                            <button onclick="window.prevHomeSlide()" class="home-nav-btn left-2 lg:-left-6">❮</button>
+                            <button onclick="window.nextHomeSlide()" class="home-nav-btn right-2 lg:-right-6">❯</button>
+
+                           <div id="home-slider-container"
+    class="relative h-[350px] md:h-[600px] overflow-hidden rounded-[2rem] bg-slate-100 dark:bg-slate-800 shadow-2xl border dark:border-slate-700">
+                                <!-- Los slides se generan por JS -->
+                            </div>
+                        </div>
+
+                        <div id="home-slider-dots" class="flex justify-center gap-2 mt-6">
+                            <!-- Los puntos se generan por JS -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hero Text (Ahora debajo del slider y más modesto) -->
+                <header class="bg-white dark:bg-slate-900 py-16 md:py-24">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <span class="text-blue-600 font-bold text-[20px] tracking-[0.2em] uppercase mb-1 block">Aprende
+                            Gratis. Hoy mismo.</span>
+                        <h2
+                            class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight mb-1 tracking-tight">
+                            Desarrolla las habilidades técnicas mas solicitadas en el campo laboral.</h1>
+                    </div>
+                </header>
+
+            </section>
+
+            <section id="page-cursos" class="page-view py-12 md:py-20 bg-white dark:bg-slate-900">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold dark:text-white">Catálogo de Cursos</h2>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-2 mb-8" id="filter-container">
+                            <button onclick="filterCourses('all')"
+                            class="filter-btn active px-4 py-2 border dark:border-slate-700 rounded-full text-xs font-bold dark:text-slate-300"
+                            id="filter-all">Todos</button>
+                    </div>
+                    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8" id="courses-grid">
+                    </div>
+                </div>
+            </section>
+
+            <section id="page-mis-cursos" class="page-view py-12 md:py-20 bg-slate-100 dark:bg-slate-800/50 min-h-full">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="flex flex-wrap justify-center gap-2 mb-8" id="my-filters-container"></div>
+                    <h2 class="text-2xl font-bold mb-8 text-center lg:text-left dark:text-white">Mi Panel de Aprendizaje
+                    </h2>
+                    <div id="no-progress-view"
+                        class="bg-white dark:bg-slate-800 p-10 rounded-3xl text-center border-dashed border-2 border-slate-300 dark:border-slate-600">
+                        <p class="mb-4 text-slate-500 dark:text-slate-400">No tienes cursos inscritos todavía.</p>
+                        <button onclick="navigateTo('cursos')" class="bg-blue-600 text-white px-6 py-2 rounded-xl">Ir al
+                            catálogo</button>
+                    </div>
+                    <div id="progress-list" class="grid sm:grid-cols-4 gap-6 hidden"></div>
+                </div>
+            </section>
+
+            <section id="page-nosotros" class="page-view py-12 md:py-20 bg-slate-50 dark:bg-slate-900 text-center">
+                <div class="max-w-3xl mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-6 uppercase tracking-widest text-blue-600">Quiénes Somos</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">En <b>OmniTech Learning</b>,
+                        somos un equipo apasionado por la convergencia entre la tecnología y la operatividad industrial.
+                        Nacimos de la observación de una necesidad clara en el entorno laboral actual: la falta de
+                        espacios que enseñen, de forma sencilla y gratuita, cómo dominar las herramientas digitales
+                        (software) sin descuidar los estándares y realidades del campo laboral.</p><br>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">No ofrecemos solo un canal de
+                        tutoriales; somos una comunidad de aprendizaje continuo. Creemos firmemente que el acceso al
+                        conocimiento técnico de calidad es el motor principal para que cualquier persona pueda mejorar
+                        su perfil profesional y ser más competitiva en el campo laboral.</p>
+                    <br><br>
+                    <h2 class="text-3xl font-bold mb-6 uppercase tracking-widest text-blue-600">Misión</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Impulsar el crecimiento de
+                        nuestra comunidad mediante el acceso gratuito a formación técnica de calidad, enfocada en
+                        desarrollar las habilidades digitales mas solicitadas para destacar en el campo laboral actual.
+                    </p>
+                    <br><br>
+                    <h2 class="text-3xl font-bold mb-6 uppercase tracking-widest text-blue-600">Visión</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">Ser el canal de aprendizaje
+                        líder para quienes buscan mejorar su perfil profesional.</p>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Panel Estudiantil (Aside) -->
+        <aside id="student-panel"
+            class="fixed inset-y-0 right-0 w-80 bg-white dark:bg-slate-800 border-l border-slate-200 dark:border-slate-700 flex-col overflow-y-auto p-6 shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 lg:relative lg:translate-x-0 lg:w-80 lg:z-40 lg:shadow-none lg:hidden">
+            <button onclick="window.toggleStudentPanel()"
+                class="lg:hidden absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div id="student-panel-content" class="flex flex-col h-full mt-8 lg:mt-0">
+                <div class="text-center mb-8 relative group">
+                    <div
+                        class="w-24 h-24 rounded-full bg-blue-100 dark:bg-slate-700 border-4 border-white dark:border-slate-800 shadow-lg mx-auto mb-4 overflow-hidden relative">
+                        <img id="student-avatar"
+                            src="https://ui-avatars.com/api/?name=Estudiante&background=2563EB&color=fff"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <h3 id="student-name-display"
+                        class="font-bold text-slate-800 dark:text-white text-lg uppercase tracking-tight">Cargando...
+                    </h3>
+                    <p id="student-location-display"
+                        class="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest mt-1">
+                        País, Ciudad</p>
+
+                    <div class="flex flex-col gap-2 mt-4 px-4">
+                        <button onclick="window.openProfileEdit()"
+                            class="text-[10px] font-bold text-blue-600 border border-blue-200 dark:border-blue-900 px-3 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/30 transition uppercase tracking-widest">Editar
+                            Perfil</button>
+                        <!-- Boton Salir movido aqui -->
+                        <button id="btn-panel-logout"
+                            class="text-[10px] font-bold text-slate-400 border border-slate-200 dark:border-slate-700 px-3 py-2 rounded-full hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition uppercase tracking-widest">Cerrar
+                            Sesión</button>
+                    </div>
+                </div>
+
+                <!-- Nueva sección de Logros -->
+                <div class="mt-8">
+                    <h4
+                        class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-4 text-center">
+                        Tus Logros</h4>
+                    <div id="achievements-container" class="flex flex-col gap-3">
+                        <div
+                            class="py-8 bg-slate-50 dark:bg-slate-700/50 rounded-2xl border border-dashed border-slate-200 dark:border-slate-600 text-center w-full">
+                            <span class="text-xl opacity-20">🏆</span>
+                            <p class="text-[9px] font-bold text-slate-300 dark:text-slate-600 uppercase mt-2">Completa
+                                un curso</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-auto pt-6 border-t dark:border-slate-700 text-center">
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">OmniTech Student ID</p>
+                    <p id="student-uid-display"
+                        class="text-[8px] text-slate-300 dark:text-slate-500 font-mono mt-1 break-all">ID...</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- MODALES DE AUTENTICACION Y PERFIL -->
+    <div id="auth-modal" class="modal opacity-0 pointer-events-none fixed inset-0 flex items-center justify-center">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="window.closeAuthModal()"></div>
+        <div
+            class="bg-white dark:bg-slate-800 w-full max-w-5xl h-[90vh] mx-4 rounded-3xl shadow-2xl z-50 overflow-hidden flex flex-col justify-center">
+            <div class="p-8 md:p-10 text-center">
+                <div
+                    class="w-16 h-16 bg-blue-50 dark:bg-slate-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <span class="text-3xl">🎓</span></div>
+                <h2 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">Bienvenido</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mb-8">Accede para guardar tu progreso en la nube.
+                </p>
+                <div class="max-w-sm mx-auto">
+                    <button id="btn-google-login" class="btn-google dark:bg-white dark:text-slate-900">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24">
+                            <path
+                                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                fill="#4285F4" />
+                            <path
+                                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                fill="#34A853" />
+                            <path
+                                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                                fill="#FBBC05" />
+                            <path
+                                d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                fill="#EA4335" />
+                        </svg>
+                        Continuar con Google
+                    </button>
+                    <button onclick="window.closeAuthModal()"
+                        class="mt-4 text-xs font-bold text-slate-400 hover:text-red-600 transition uppercase tracking-widest">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="profile-modal" class="modal opacity-0 pointer-events-none fixed inset-0 flex items-center justify-center">
+        <div class="absolute inset-0 bg-blue-900/40 backdrop-blur-md" onclick="window.closeProfileModal()"></div>
+        <div class="standard-modal-content z-50 overflow-hidden">
+            <div class="bg-blue-600 p-6 text-white text-center relative flex-none">
+                <h2 class="text-xl font-bold uppercase tracking-tight">Tu Perfil Estudiantil</h2>
+                <p class="text-xs text-blue-100 mt-2">Personaliza tu cuenta para que tu perfil sea único.</p>
+                <button onclick="window.closeProfileModal()"
+                    class="absolute top-6 right-6 text-white hover:text-blue-200">✕</button>
+            </div>
+            <div class="flex-grow overflow-y-auto">
+                <form id="profile-form" class="p-6 md:p-10 space-y-6 bg-white dark:bg-slate-800 max-w-2xl mx-auto">
+                    <div class="flex flex-col items-center mb-8">
+                        <div
+                            class="w-28 h-28 rounded-full bg-slate-100 dark:bg-slate-700 border-4 border-slate-50 dark:border-slate-800 overflow-hidden mb-4 shadow-inner">
+                            <img id="profile-preview"
+                                src="https://ui-avatars.com/api/?name=User&background=cbd5e1&color=fff"
+                                class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <label
+                            class="cursor-pointer bg-slate-100 dark:bg-slate-700 px-6 py-2.5 rounded-xl text-[10px] font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition uppercase tracking-widest border border-slate-200 dark:border-slate-600">
+                            <span>Elegir Fotografía</span>
+                            <input type="file" id="prof-photo" accept="image/*" class="hidden">
+                        </label>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Nombre
+                            Completo</label>
+                        <input type="text" id="prof-name" required
+                            class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-2xl px-5 py-4 text-sm font-bold text-slate-700 dark:text-white outline-none focus:border-blue-500 transition">
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label
+                                class="block text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">País</label>
+                            <input type="text" id="prof-country" required
+                                class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-2xl px-5 py-4 text-sm font-bold text-slate-700 dark:text-white outline-none focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label
+                                class="block text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Ciudad/Residencia</label>
+                            <input type="text" id="prof-res" required
+                                class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-2xl px-5 py-4 text-sm font-bold text-slate-700 dark:text-white outline-none focus:border-blue-500 transition">
+                        </div>
+                    </div>
+                    <div class="pt-6">
+                        <button type="submit" id="btn-save-profile"
+                            class="w-full py-5 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 transition shadow-xl shadow-blue-200 uppercase tracking-widest">Actualizar
+                            Datos</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE DAR DE BAJA -->
+    <div id="unenroll-modal" class="modal opacity-0 pointer-events-none fixed inset-0 flex items-center justify-center">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="window.closeAuthModal()"></div>
+        <div class="standard-modal-content z-50 justify-center">
+            <div class="p-8 text-center max-w-lg mx-auto flex flex-col justify-center h-full">
+                <div
+                    class="w-20 h-20 bg-red-50 dark:bg-red-900/30 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+                    ⚠️</div>
+                <h2 class="text-2xl font-bold text-slate-800 dark:text-white mb-4">¿Dar de baja curso?</h2>
+                <p class="text-base text-slate-500 dark:text-slate-400 mb-10 leading-relaxed">Se borrará todo tu
+                    progreso asociado a este curso. Esta acción no se puede deshacer.</p>
+                <div class="flex gap-4">
+                    <button onclick="window.closeUnenrollModal()"
+                        class="flex-1 py-4 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-600 transition">Cancelar</button>
+                    <button id="confirm-unenroll-btn"
+                        class="flex-1 py-4 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition shadow-lg shadow-red-200">Sí,
+                        eliminar curso</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CURSO (TEMARIO) -->
+    <div id="course-modal" class="modal opacity-0 pointer-events-none fixed inset-0 flex items-center justify-center">
+        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="window.closeCourseModal()"></div>
+        <div
+            class="bg-white dark:bg-slate-800 w-full max-w-5xl h-[90vh] mx-4 rounded-3xl shadow-2xl z-50 overflow-hidden flex flex-col">
+<div class="p-6 border-b dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900 flex-none gap-4">
+    <h2 id="modal-course-title" class="text-xl font-bold text-slate-800 dark:text-white min-w-0 flex-1">Curso</h2>
+    <button onclick="window.closeCourseModal()" class="w-10 h-10 shrink-0 ...">✕</button>
+</div>
+            <div class="flex-grow overflow-y-auto p-6 space-y-6">
+                <div class="video-container shadow-lg"><iframe id="modal-course-video" src="" frameborder="0"
+                        allowfullscreen></iframe></div>
+                <div id="modal-lessons-list" class="space-y-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE LECCIÓN (REPRODUCTOR) -->
+    <div id="lesson-modal" class="modal opacity-0 pointer-events-none fixed inset-0 flex items-center justify-center">
+        <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-md" onclick="window.closeLessonModal()"></div>
+        <div
+            class="bg-white dark:bg-slate-800 w-full max-w-5xl h-[90vh] mx-4 rounded-3xl shadow-2xl z-50 overflow-hidden flex flex-col">
+            <div
+                class="p-4 border-b dark:border-slate-700 flex justify-between items-center bg-white dark:bg-slate-800 flex-none">
+                <div class="flex items-center gap-4">
+                    <button onclick="window.closeLessonModal()"
+                        class="hover:bg-slate-100 dark:hover:bg-slate-700 p-2 rounded-lg transition dark:text-white"><svg
+                            class="w-6 h-6 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
+                        </svg></button>
+                    <div>
+                        <h2 id="modal-lesson-title" class="text-base font-bold text-slate-800 dark:text-white">Lección
+                        </h2>
+                        <p id="modal-lesson-course-name" class="text-[10px] text-blue-600 font-bold uppercase">Curso</p>
+                    </div>
+                </div>
+                <button onclick="window.closeLessonModal()"
+                    class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 font-bold dark:text-white">✕</button>
+            </div>
+            <div class="flex-grow flex flex-col overflow-hidden bg-slate-50 dark:bg-slate-900">
+                <div
+                    class="lg:hidden bg-white dark:bg-slate-800 border-b dark:border-slate-700 overflow-hidden flex-none">
+                    <button onclick="window.toggleMobileAds()"
+                        class="w-full py-2 bg-slate-50 dark:bg-slate-700/50 border-b dark:border-slate-600 flex items-center justify-center gap-2 text-[9px] font-bold uppercase text-slate-400 hover:text-blue-600 transition">
+                        <span id="ad-toggle-text">Ocultar Ofertas</span>
+                        <svg id="ad-toggle-icon" class="w-3 h-3 transition-transform" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="mobile-ad-wrapper" class="mobile-ad-section p-4">
+                        <div
+                            class="w-full h-12 bg-slate-50 dark:bg-slate-700 rounded-xl flex items-center justify-center border border-slate-100 dark:border-slate-600 overflow-hidden mb-3">
+                            <img src="https://logodownload.org/wp-content/uploads/2018/10/mercado-libre-logo.png"
+                                alt="Mercado Libre Logo" class="h-6 object-contain">
+                        </div>
+                        <div id="ad-slider-mobile-container" class="ad-container relative mobile-hero-ad">
+                            <div id="ad-slider-mobile" class="h-full"></div>
+                            <button onclick="prevAd(2)"
+                                class="ad-nav-btn absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-3 rounded-full shadow-lg z-10 text-slate-800 dark:text-white border border-slate-200 dark:border-slate-600">❮</button>
+                            <button onclick="nextAd(2)"
+                                class="ad-nav-btn absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-800/80 p-3 rounded-full shadow-lg z-10 text-slate-800 dark:text-white border border-slate-200 dark:border-slate-600">❯</button>
+                        </div>
+                        <div id="ad-dots-mobile" class="flex justify-center py-2 bg-white dark:bg-slate-800"></div>
+                    </div>
+                </div>
+
+                <div class="flex border-b dark:border-slate-700 bg-white dark:bg-slate-800 flex-none">
+                    <button onclick="window.switchLessonTab('video')" id="tab-btn-video"
+                        class="tab-btn active px-6 py-4 text-xs font-bold uppercase dark:text-slate-400">Video</button>
+                    <button onclick="window.switchLessonTab('recursos')" id="tab-btn-recursos"
+                        class="tab-btn px-6 py-4 text-xs font-bold uppercase dark:text-slate-400">Recursos</button>
+                    <button onclick="window.switchLessonTab('evaluacion')" id="tab-btn-evaluacion"
+                        class="tab-btn px-6 py-4 text-xs font-bold uppercase dark:text-slate-400">Evaluación</button>
+                </div>
+
+                <div class="flex-grow flex flex-col lg:flex-row overflow-hidden">
+                    <div class="w-full lg:w-2/3 h-full overflow-y-auto p-4 md:p-8">
+                        <div id="lesson-tab-video" class="lesson-tab-content active space-y-6">
+                            <div class="video-container shadow-2xl bg-black"><iframe id="lesson-video-iframe" src=""
+                                    frameborder="0" allowfullscreen></iframe></div>
+                            <div
+                                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border dark:border-slate-700 shadow-sm">
+                                <p id="lesson-long-desc"
+                                    class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed"></p>
+                            </div>
+                        </div>
+                        <div id="lesson-tab-recursos" class="lesson-tab-content space-y-6">
+                            <div
+                                class="bg-white dark:bg-slate-800 p-8 rounded-3xl border dark:border-slate-700 shadow-sm min-h-[300px]">
+                                <h3 class="font-bold mb-6 flex items-center gap-3 dark:text-white">📥 Recursos</h3>
+                                <div id="lesson-resources-list" class="grid gap-4"></div>
+                            </div>
+                        </div>
+                        <div id="lesson-tab-evaluacion" class="lesson-tab-content space-y-6">
+                            <div
+                                class="bg-white dark:bg-slate-800 p-8 rounded-3xl border dark:border-slate-700 shadow-sm">
+                                <h3 class="font-bold mb-6 flex items-center gap-3 dark:text-white">📝 Evaluación</h3>
+                                <div id="evaluation-container" class="space-y-8 pb-10 text-xs sm:text-base"></div>
+                                <button onclick="window.submitEvaluation()"
+                                    class="w-full py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 shadow-lg transition">Enviar
+                                    Evaluación</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel lateral de anuncios escritorio: ahora con 3 sliders -->
+                    <div
+                        class="hidden lg:flex lg:w-1/3 bg-white dark:bg-slate-800 flex-col border-l dark:border-slate-700 p-4 overflow-y-auto space-y-8">
+                        <div
+                            class="w-full h-16 bg-slate-50 dark:bg-slate-900 rounded-xl flex items-center justify-center border border-slate-100 dark:border-slate-700 overflow-hidden mb-2 shrink-0">
+                            <img src="https://logodownload.org/wp-content/uploads/2018/10/mercado-libre-logo.png"
+                                alt="Mercado Libre Logo" class="h-8 object-contain">
+                        </div>
+
+                        <!-- Slider 1 -->
+                        <div class="flex flex-col ad-container relative group">
+                            <span
+                                class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-2 block">Oferta
+                                Destacada</span>
+                            <div id="ad-slider-desktop-1" class="relative"></div>
+                            <button onclick="prevAd(0)"
+                                class="ad-nav-btn absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 p-1.5 rounded-full shadow border dark:border-slate-600 text-[10px] z-10 dark:text-white">❮</button>
+                            <button onclick="nextAd(0)"
+                                class="ad-nav-btn absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 p-1.5 rounded-full shadow border dark:border-slate-600 text-[10px] z-10 dark:text-white">❯</button>
+                        </div>
+
+                        <!-- Slider 2 -->
+                        <div class="flex flex-col ad-container relative group">
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-2 block">Más
+                                Vendidos</span>
+                            <div id="ad-slider-desktop-2" class="relative"></div>
+                            <button onclick="prevAd(1)"
+                                class="ad-nav-btn absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 p-1.5 rounded-full shadow border dark:border-slate-600 text-[10px] z-10 dark:text-white">❮</button>
+                            <button onclick="nextAd(1)"
+                                class="ad-nav-btn absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 p-1.5 rounded-full shadow border dark:border-slate-600 text-[10px] z-10 dark:text-white">❯</button>
+                        </div>
+
+                        <!-- Slider 3 -->
+                        <!-- <div class="flex flex-col ad-container relative group">
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-2 block">Para
+                                tu Setup</span>
+                            <div id="ad-slider-desktop-3" class="relative"></div>
+                            <button onclick="prevAd(2)"
+                                class="ad-nav-btn absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 p-1.5 rounded-full shadow border dark:border-slate-600 text-[10px] z-10 dark:text-white">❮</button>
+                            <button onclick="nextAd(2)"
+                                class="ad-nav-btn absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 p-1.5 rounded-full shadow border dark:border-slate-600 text-[10px] z-10 dark:text-white">❯</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE LOGRO INDIVIDUAL -->
+<div id="achievement-modal" class="modal opacity-0 pointer-events-none fixed inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-md" onclick="window.closeAchievementModal()"></div>
+        <div class="bg-white dark:bg-slate-800 w-full max-w-md rounded-[2.5rem] shadow-2xl z-50 overflow-y-auto max-h-[90vh] border-t-8 border-yellow-400 relative flex flex-col p-6 md:p-10 text-center">
+            
+            <button onclick="window.closeAchievementModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 transition text-xl">✕</button>
+            
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-yellow-100 p-1 mx-auto mb-4 shadow-xl bg-white dark:bg-slate-700 overflow-hidden shrink-0">
+                <img id="ach-student-photo" src="" class="w-full h-full object-cover rounded-full">
+            </div>
+
+            <h4 id="ach-student-name" class="font-black text-slate-800 dark:text-white text-lg uppercase tracking-tight mb-4">NOMBRE DEL ESTUDIANTE</h4>
+
+            <div class="py-6 border-y border-slate-100 dark:border-slate-700 w-full mb-6">
+                <div class="text-4xl mb-3">🏆</div>
+                <p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mb-2">¡Curso Concluido!</p>
+                
+                <h2 id="ach-course-name" class="text-base md:text-xl font-black text-blue-600 uppercase leading-tight px-2 mb-4">NOMBRE DEL CURSO</h2>
+                
+                <p class="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase mb-2">Promedio Final</p>
+                <div class="inline-block bg-blue-50 dark:bg-blue-900/30 px-6 py-2 rounded-2xl">
+                    <span id="ach-promedio-valor" class="text-3xl font-black text-slate-800 dark:text-white">100</span>
+                </div>
+            </div>
+
+            <p class="text-slate-400 font-bold uppercase text-[9px] tracking-[0.3em] italic mb-6">eres imparable • sigue así</p>
+            
+            <button onclick="window.closeAchievementModal()" class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black rounded-2xl hover:scale-[1.02] transition-transform shadow-lg uppercase tracking-widest text-xs">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Logica de la página-->
+    <script src="./src/./scripts/./logica.js"></script>
+
+    <!-- FIREBASE INTEGRATION -->
+    <script type="module" src="./src/./scripts/./firebase.js"></script>
+</body>
+
+</html>
